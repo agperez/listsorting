@@ -1,0 +1,33 @@
+<h1><%=@setlist.name%>'s Songs:</h1>
+
+<ul id="setlist_songs"> <% @set_songs.each do |setlist_song| %>
+  <li id="setlist_song_<%= setlist_song.id %>"><span class="handle">[drag]</span><%= setlist_song.song.name %>, (Position: <%=setlist_song.position%>)</li>
+<% end %></ul>
+
+<%= link_to 'Edit', edit_setlist_path(@setlist) %> |
+<%= link_to 'Back', setlists_path %>
+
+
+<script>
+  $(document).ready(function(){
+    $('#setlist_songs').sortable({
+      axis: 'y',
+      dropOnEmpty: false,
+      handle: '.handle',
+      cursor: 'crosshair',
+      items: 'li',
+      opacity: 0.4,
+      scroll: true,
+      update: function(){
+        $.ajax({
+          type: 'post',
+          data: $('#setlist_songs').sortable('serialize'),
+          dataType: 'script',
+          complete: function(request){
+            $('#setlist_songs').effect('highlight');
+          },
+        url: '/setlist_songs/sort'})
+      }
+    });
+  });
+</script>

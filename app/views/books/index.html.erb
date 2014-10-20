@@ -1,9 +1,18 @@
 <h1>Listing books</h1>
 
-<ul id="books"> <% @books.each do | book| %>
+<ul id="books"> <% @books.each do |book| %>
   <li id="book_<%= book.id %>"><span class="handle">[drag]</span><%= book.name %> (Position <%=book.position%>)</li>
 <% end %></ul>
 <%= link_to 'New book', new_book_path %>
+<h1>
+<%= link_to 'Songs', songs_path %>
+</h1>
+<h1>
+<%= link_to 'Setlists', setlists_path %>
+</h1>
+<h1>
+<%= link_to 'Setlist_Songs', setlist_songs_path %>
+</h1>
 
 <script>
 $(document).ready(function(){

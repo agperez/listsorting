@@ -1,0 +1,8 @@
+<h1>Listing setlists</h1>
+
+<% @setlists.each do |setlist| %>
+  <h2><%= link_to setlist.name, setlist %></h2>
+<% end %>
+<br>
+
+<%= link_to 'New Setlist', new_setlist_path %>

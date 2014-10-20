@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :setlist_songs do
+    post :sort, on: :collection
+  end
+
+  resources :songs do
+    post :sort, on: :collection
+  end
+
+  resources :setlists
+
   resources :books do
     post :sort, on: :collection
   end

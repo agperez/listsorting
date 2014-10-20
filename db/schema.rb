@@ -11,13 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141010215453) do
+ActiveRecord::Schema.define(version: 20141015204841) do
 
   create_table "books", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "position"
+  end
+
+  create_table "setlist_songs", force: true do |t|
+    t.integer  "setlist_id"
+    t.integer  "song_id"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "setlists", force: true do |t|
+    t.string   "name"
+    t.datetime "set_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "songs", force: true do |t|
+    t.string   "name"
+    t.text     "chart"
+    t.integer  "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
